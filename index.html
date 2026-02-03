@@ -207,9 +207,8 @@
   const BOOKMARK_COLOR = '#f0a030';
 
   const preExistingSegments = [
-    { startTime: 5, endTime: 9, labelText: '1', color: BOOKMARK_COLOR, editable: true, id: 'pre-1' },
-    { startTime: 13, endTime: 16, labelText: '2', color: BOOKMARK_COLOR, editable: true, id: 'pre-2' },
-    { startTime: 20, endTime: 24, labelText: '3', color: BOOKMARK_COLOR, editable: true, id: 'pre-3' },
+    { startTime: 0.5, endTime: 1.5, labelText: '1', color: BOOKMARK_COLOR, editable: true, id: 'pre-1' },
+    { startTime: 2.5, endTime: 4, labelText: '2', color: BOOKMARK_COLOR, editable: true, id: 'pre-2' },
   ];
 
   function formatTime(seconds) {
@@ -278,9 +277,8 @@
         zoomview.setWaveformDragMode('insert-segment');
         zoomview.enableSegmentDragging(true);
 
-        if (fileType === 'speech') {
-          preExistingSegments.forEach(s => peaksInstance.segments.add(s));
-        }
+        // Add pre-existing segments
+        preExistingSegments.forEach(s => peaksInstance.segments.add(s));
 
         peaksInstance.on('segments.add', function(event) {
           const segments = event.segments || [];
